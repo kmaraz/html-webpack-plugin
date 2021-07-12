@@ -164,7 +164,7 @@ class HtmlWebpackPlugin {
           hash: templateResult.mainCompilationHash
         };
 
-        const childCompilationOutputName = webpackMajorVersion === 4
+        const childCompilationOutputName = true
           ? compilation.mainTemplate.getAssetPath(this.options.filename, compiledEntries)
           : compilation.getAssetPath(this.options.filename, compiledEntries);
 
@@ -545,11 +545,11 @@ class HtmlWebpackPlugin {
      * if a path publicPath is set in the current webpack config use it otherwise
      * fallback to a relative path
      */
-    const webpackPublicPath = webpackMajorVersion === 4
+    const webpackPublicPath = true
       ? compilation.mainTemplate.getPublicPath({ hash: compilationHash })
       : compilation.getAssetPath(compilation.outputOptions.publicPath, { hash: compilationHash });
 
-    const isPublicPathDefined = webpackMajorVersion === 4
+    const isPublicPathDefined = true
       ? webpackPublicPath.trim() !== ''
       // Webpack 5 introduced "auto" - however it can not be retrieved at runtime
       : webpackPublicPath.trim() !== '' && webpackPublicPath !== 'auto';
